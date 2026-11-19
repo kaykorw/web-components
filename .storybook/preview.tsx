@@ -1,5 +1,7 @@
 import type { Preview } from '@storybook/react-vite'
 
+import '../src/styles/tokens.css'
+
 const preview: Preview = {
   parameters: {
     controls: {
@@ -16,6 +18,31 @@ const preview: Preview = {
       test: 'todo'
     }
   },
+
+  // Light/Dark switch in the toolbar, matching the Widgetbook themes.
+  globalTypes: {
+    theme: {
+      description: 'Colour theme',
+      toolbar: {
+        title: 'Theme',
+        icon: 'mirror',
+        items: [
+          { value: 'light', title: 'Light' },
+          { value: 'dark', title: 'Dark' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
+  initialGlobals: { theme: 'light' },
+  decorators: [
+    (Story, context) => {
+      document.documentElement.dataset.theme = context.globals.theme ?? 'light'
+      document.body.style.background = 'var(--kayko-color-surface)'
+      document.body.style.color = 'var(--kayko-color-on-surface)'
+      return <Story />
+    },
+  ],
 };
 
 export default preview;

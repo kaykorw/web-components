@@ -1,0 +1,135 @@
+.root {
+  display: grid;
+  grid-template-columns: 24px auto;
+  justify-content: start;
+  column-gap: 8px;
+  font-family: var(--kayko-font-family, inherit);
+  color: var(--kayko-color-on-surface);
+}
+
+/* 24 x 24 hit area (WCAG 2.2 target size) around an 18 px box */
+.control {
+  position: relative;
+  grid-column: 1;
+  grid-row: 1;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.box {
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--kayko-color-outline);
+  border-radius: var(--kayko-radius-sm, 4px);
+  color: var(--kayko-color-on-primary);
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.box svg {
+  display: none;
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.input:checked + .box,
+.input:indeterminate + .box {
+  background: var(--kayko-color-primary);
+  border-color: var(--kayko-color-primary);
+}
+
+.input:checked:not(:indeterminate) + .box .check,
+.input:indeterminate + .box .dash {
+  display: block;
+}
+
+/* Hover = 8% state layer ring (Material 3) */
+.input:hover:not(:disabled) + .box {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--kayko-color-on-surface) 8%, transparent);
+}
+
+.input:focus-visible + .box {
+  outline: 2px solid var(--kayko-color-primary);
+  outline-offset: 2px;
+}
+
+/* Error */
+.invalid .box {
+  border-color: var(--kayko-color-error);
+  color: var(--kayko-color-on-error);
+}
+
+.invalid .input:checked + .box,
+.invalid .input:indeterminate + .box {
+  background: var(--kayko-color-error);
+  border-color: var(--kayko-color-error);
+}
+
+/* Disabled (Material 3: 38% content) */
+.input:disabled {
+  cursor: default;
+}
+
+.input:disabled + .box {
+  border-color: color-mix(in srgb, var(--kayko-color-on-surface) 38%, transparent);
+}
+
+.input:disabled:checked + .box,
+.input:disabled:indeterminate + .box {
+  background: color-mix(in srgb, var(--kayko-color-on-surface) 38%, transparent);
+  border-color: transparent;
+  color: var(--kayko-color-surface);
+}
+
+/* Text */
+.label {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 14px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.description,
+.error {
+  grid-column: 2;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.description {
+  color: var(--kayko-color-on-surface-variant);
+}
+
+.error {
+  color: var(--kayko-color-error);
+}
+
+.disabled .label,
+.disabled .description {
+  color: color-mix(in srgb, var(--kayko-color-on-surface) 38%, transparent);
+  cursor: default;
+}

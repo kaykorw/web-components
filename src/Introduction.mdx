@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# Kayko Design System: React
+
+Live React components for the **Kayko Design System**. The Flutter versions live in Widgetbook, and both are presented in zeroheight.
+
+## Using a component
+
+```tsx
+import { Button, Calendar, Checkbox } from './components';
+```
+
+Import `src/styles/tokens.css` once at the app root. Set `data-theme="dark"` on `<html>` for the dark theme.
+
+## Naming contract (React ↔ Flutter)
+
+| React | Flutter |
+|---|---|
+| `Button` | `AppButton` |
+| `Calendar` | `AppCalendar` |
+| `Checkbox` | `AppCheckbox` |
+
+- Option values are identical on both platforms (`primary`, `secondary`, `danger`; `small`, `medium`, `large`).
+- Story names are use-case names and match the Widgetbook use cases exactly. **Never rename a story** once it's embedded in zeroheight.
+
+## Adding a component
+
+1. Create `src/components/<Name>/` with `<Name>.tsx`, `<Name>.module.css`, `<Name>.stories.tsx` and `index.ts`.
+2. Use the `--kayko-*` tokens for every colour, radius and font. Never hard-code hex values.
+3. Write one story per use case, with the same names as the Flutter use cases.
+4. Export the component from `src/components/index.ts`.
+5. Run `npm run lint`, `npm run build` and `npm run build-storybook` before opening a PR.

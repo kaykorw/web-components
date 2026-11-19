@@ -1,0 +1,177 @@
+/* 7 columns x 40 px + 12 px padding = 304 px wide, same as Flutter AppCalendar */
+.calendar {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 12px;
+  font-family: var(--kayko-font-family, inherit);
+  color: var(--kayko-color-on-surface);
+  background: var(--kayko-color-surface);
+  border-radius: var(--kayko-radius-lg, 12px);
+  user-select: none;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding-inline-start: 8px;
+  margin-bottom: 4px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* "novembre 2026" -> "Novembre 2026" */
+.title::first-letter {
+  text-transform: uppercase;
+}
+
+.nav {
+  display: flex;
+  gap: 4px;
+}
+
+.navButton {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--kayko-color-on-surface-variant);
+  cursor: pointer;
+}
+
+.navButton svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.navButton:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--kayko-color-on-surface) 8%, transparent);
+}
+
+.navButton:focus-visible {
+  outline: 2px solid var(--kayko-color-primary);
+  outline-offset: 2px;
+}
+
+.navButton:disabled {
+  opacity: 0.38;
+  cursor: default;
+}
+
+.grid {
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+.weekday {
+  width: 40px;
+  height: 32px;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  color: var(--kayko-color-on-surface-variant);
+}
+
+.cell {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Range band behind the day circles */
+.bandStart::before,
+.bandEnd::before,
+.bandMiddle::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  background: var(--kayko-color-primary-container);
+}
+
+.bandMiddle::before {
+  left: 0;
+  right: 0;
+}
+
+.bandStart::before {
+  left: 50%;
+  right: 0;
+}
+
+.bandEnd::before {
+  left: 0;
+  right: 50%;
+}
+
+/* Range being previewed (end day not picked yet) */
+.bandPreview::before {
+  opacity: 0.5;
+}
+
+.day {
+  position: relative;
+  z-index: 1;
+  display: inline-grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.bandMiddle .day {
+  color: var(--kayko-color-on-primary-container);
+}
+
+.day:hover:not([aria-disabled='true']):not(.selected) {
+  background: color-mix(in srgb, var(--kayko-color-on-surface) 8%, transparent);
+}
+
+.today {
+  border-color: var(--kayko-color-primary);
+  color: var(--kayko-color-primary);
+}
+
+.selected,
+.bandMiddle .selected {
+  background: var(--kayko-color-primary);
+  border-color: transparent;
+  color: var(--kayko-color-on-primary);
+}
+
+.day[aria-disabled='true'] {
+  color: color-mix(in srgb, var(--kayko-color-on-surface) 38%, transparent);
+  border-color: transparent;
+  cursor: default;
+}
+
+.day:focus-visible {
+  outline: 2px solid var(--kayko-color-on-surface);
+  outline-offset: 1px;
+}
