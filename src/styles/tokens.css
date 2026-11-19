@@ -1,0 +1,59 @@
+/*
+ * Kayko Design System: placeholder tokens.
+ *
+ * Token names follow the Flutter ColorScheme roles (primary, onPrimary,
+ * primaryContainer, error, surface, outline, ...) so one vocabulary works on
+ * both platforms. The same hex values live in
+ * flutter/app_ui/lib/src/theme/app_theme.dart.
+ *
+ * Replace the values with the real Figma tokens when the foundation pages
+ * (colours, typography, spacing) are done. Keep the names.
+ *
+ * Import once at the app root (and in .storybook/preview.tsx).
+ * Dark theme: set data-theme="dark" on <html> (or any ancestor).
+ */
+ :root,
+ [data-theme='light'] {
+   color-scheme: light;
+ 
+   --kayko-color-primary: #2563eb;
+   --kayko-color-on-primary: #ffffff;
+   --kayko-color-primary-container: #dbe5ff;
+   --kayko-color-on-primary-container: #0b2a6b;
+ 
+   --kayko-color-error: #d92d20;
+   --kayko-color-on-error: #ffffff;
+ 
+   --kayko-color-surface: #ffffff;
+   --kayko-color-on-surface: #1a1c22;
+   --kayko-color-on-surface-variant: #5b6170;
+ 
+   --kayko-color-outline: #767c8a;
+   --kayko-color-outline-variant: #d9dce3;
+ 
+   --kayko-font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+ 
+   --kayko-radius-sm: 4px;
+   --kayko-radius-md: 8px;
+   --kayko-radius-lg: 12px;
+ }
+ 
+ [data-theme='dark'] {
+   color-scheme: dark;
+ 
+   --kayko-color-primary: #9db8ff;
+   --kayko-color-on-primary: #0b2a6b;
+   --kayko-color-primary-container: #1e3f99;
+   --kayko-color-on-primary-container: #dbe5ff;
+ 
+   --kayko-color-error: #ffb4ab;
+   --kayko-color-on-error: #690005;
+ 
+   --kayko-color-surface: #121318;
+   --kayko-color-on-surface: #e3e4ea;
+   --kayko-color-on-surface-variant: #a9aeba;
+ 
+   --kayko-color-outline: #8b909c;
+   --kayko-color-outline-variant: #3a3e48;
+ }
+ 
