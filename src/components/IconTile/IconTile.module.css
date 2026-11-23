@@ -1,0 +1,54 @@
+.tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tile > svg {
+  width: 50%;
+  height: 50%;
+}
+
+.small {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--kayko-radius-md);
+}
+
+.medium {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.large {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--kayko-radius-xl);
+}
+
+.primary {
+  background: var(--kayko-color-primary-subtle);
+  color: var(--kayko-color-primary-text);
+}
+
+.success {
+  background: var(--kayko-color-success-subtle);
+  color: var(--kayko-color-success);
+}
+
+.warning {
+  background: var(--kayko-color-warning-subtle);
+  color: var(--kayko-color-warning);
+}
+
+.danger {
+  background: var(--kayko-color-danger-subtle);
+  color: var(--kayko-color-danger);
+}
+
+.neutral {
+  background: var(--kayko-color-surface-sunken);
+  color: var(--kayko-color-text-muted);
+}

@@ -1,0 +1,44 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kayko-space-2);
+  min-width: 0;
+  font-family: var(--kayko-font-family);
+}
+
+.labelRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--kayko-space-2);
+}
+
+.label {
+  color: var(--kayko-color-text-strong);
+  font-size: var(--kayko-font-size-md);
+  font-weight: 500;
+}
+
+.required {
+  margin-left: 2px;
+  color: var(--kayko-color-danger-accent);
+}
+
+.aside {
+  color: var(--kayko-color-text-muted);
+  font-size: var(--kayko-font-size-sm);
+}
+
+.description,
+.error {
+  font-size: var(--kayko-font-size-sm);
+  line-height: 1.4;
+}
+
+.description {
+  color: var(--kayko-color-text-muted);
+}
+
+.error {
+  color: var(--kayko-color-danger-text);
+}

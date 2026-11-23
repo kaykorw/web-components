@@ -1,0 +1,66 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-sizing: border-box;
+  border-radius: var(--kayko-radius-xs);
+  font-family: var(--kayko-font-family);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.medium {
+  height: 20px;
+  padding: 0 8px;
+  font-size: var(--kayko-font-size-xs);
+}
+
+.small {
+  height: 18px;
+  padding: 0 6px;
+  font-size: 11px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.icon {
+  display: inline-flex;
+}
+
+.icon svg {
+  width: 12px;
+  height: 12px;
+}
+
+.success {
+  background: var(--kayko-color-success-subtle);
+  color: var(--kayko-color-success);
+}
+
+.warning {
+  background: var(--kayko-color-warning-subtle);
+  color: var(--kayko-color-warning);
+}
+
+.danger {
+  background: var(--kayko-color-danger-subtle);
+  color: var(--kayko-color-danger-text);
+}
+
+.info {
+  background: var(--kayko-color-primary-subtle);
+  color: var(--kayko-color-primary-text);
+}
+
+.neutral {
+  background: var(--kayko-color-surface-sunken);
+  color: var(--kayko-color-text-muted);
+}

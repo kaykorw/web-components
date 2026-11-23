@@ -1,0 +1,47 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kayko-space-6);
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kayko-space-8);
+  margin: 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statLabel {
+  color: var(--kayko-color-text-muted);
+  font-size: var(--kayko-font-size-md);
+}
+
+.statValue {
+  margin: 0;
+  font-size: var(--kayko-font-size-2xl);
+  font-weight: 700;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.positive {
+  color: var(--kayko-color-success-text);
+}
+
+.negative {
+  color: var(--kayko-color-danger-text);
+}
+
+.neutral {
+  color: var(--kayko-color-text-strong);
+}
+
+.chart {
+  min-width: 0;
+}

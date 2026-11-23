@@ -1,27 +1,31 @@
-/* 7 columns x 40 px + 12 px padding = 304 px wide, same as Flutter AppCalendar */
+/* Matches the date range picker screenshot: square-ish days, 2-letter weekdays,
+   faded outside days, grey "today" tile, title centred over each month. */
 .calendar {
-  display: inline-block;
-  box-sizing: border-box;
-  padding: 12px;
-  font-family: var(--kayko-font-family, inherit);
-  color: var(--kayko-color-on-surface);
-  background: var(--kayko-color-surface);
-  border-radius: var(--kayko-radius-lg, 12px);
+  display: inline-flex;
+  gap: calc(var(--cal-cell) + 4px);
+  font-family: var(--kayko-font-family);
+  color: var(--kayko-color-text-strong);
   user-select: none;
 }
 
+.month {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .header {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 40px;
-  padding-inline-start: 8px;
-  margin-bottom: 4px;
+  justify-content: center;
+  height: 32px;
 }
 
 .title {
-  font-size: 14px;
+  font-size: var(--kayko-font-size-md);
   font-weight: 600;
+  color: var(--kayko-color-text-strong);
 }
 
 /* "novembre 2026" -> "Novembre 2026" */
@@ -29,149 +33,144 @@
   text-transform: uppercase;
 }
 
-.nav {
-  display: flex;
-  gap: 4px;
-}
-
 .navButton {
+  position: absolute;
+  top: 50%;
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
+  margin-top: -14px;
   padding: 0;
-  border: none;
-  border-radius: 50%;
+  border: 0;
+  border-radius: var(--kayko-radius-sm);
   background: transparent;
-  color: var(--kayko-color-on-surface-variant);
+  color: var(--kayko-color-text-strong);
   cursor: pointer;
 }
 
-.navButton svg {
-  width: 20px;
-  height: 20px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
 }
 
 .navButton:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--kayko-color-on-surface) 8%, transparent);
+  background: var(--kayko-color-surface-sunken);
 }
 
 .navButton:focus-visible {
-  outline: 2px solid var(--kayko-color-primary);
-  outline-offset: 2px;
+  outline: 2px solid var(--kayko-color-primary-border);
 }
 
 .navButton:disabled {
-  opacity: 0.38;
+  color: var(--kayko-color-text-faint);
   cursor: default;
 }
 
 .grid {
-  border-collapse: collapse;
-  border-spacing: 0;
+  border-collapse: separate;
+  border-spacing: 0 var(--cal-gap);
+  margin: calc(var(--cal-gap) * -1) 0;
   table-layout: fixed;
 }
 
 .weekday {
-  width: 40px;
-  height: 32px;
+  width: var(--cal-cell);
+  height: 24px;
   padding: 0;
-  font-size: 12px;
+  color: var(--kayko-color-text-muted);
+  font-size: calc(var(--cal-font) - 1px);
   font-weight: 500;
   text-align: center;
-  color: var(--kayko-color-on-surface-variant);
 }
 
 .cell {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: var(--cal-cell);
+  height: var(--cal-cell);
   padding: 0;
   text-align: center;
   vertical-align: middle;
 }
 
-/* Range band behind the day circles */
+/* Range band: continuous light-blue strip behind the days */
 .bandStart::before,
 .bandEnd::before,
 .bandMiddle::before {
   content: '';
   position: absolute;
-  top: 2px;
-  bottom: 2px;
-  background: var(--kayko-color-primary-container);
-}
-
-.bandMiddle::before {
-  left: 0;
-  right: 0;
+  inset: 0;
+  background: var(--kayko-color-primary-subtle);
 }
 
 .bandStart::before {
   left: 50%;
-  right: 0;
 }
 
 .bandEnd::before {
-  left: 0;
   right: 50%;
 }
 
-/* Range being previewed (end day not picked yet) */
-.bandPreview::before {
-  opacity: 0.5;
+.preview::before {
+  opacity: 0.6;
+}
+
+.outside,
+.day {
+  display: inline-grid;
+  place-items: center;
+  width: var(--cal-cell);
+  height: var(--cal-cell);
+  font-size: var(--cal-font);
+}
+
+.outside {
+  color: var(--kayko-color-text-faint);
 }
 
 .day {
   position: relative;
   z-index: 1;
-  display: inline-grid;
-  place-items: center;
   box-sizing: border-box;
-  width: 36px;
-  height: 36px;
   padding: 0;
-  border: 1px solid transparent;
-  border-radius: 50%;
+  border: 0;
+  border-radius: var(--kayko-radius-xs);
   background: transparent;
   color: inherit;
-  font: inherit;
-  font-size: 14px;
+  font-family: inherit;
   cursor: pointer;
 }
 
 .bandMiddle .day {
-  color: var(--kayko-color-on-primary-container);
+  color: var(--kayko-color-primary-text-strong);
 }
 
-.day:hover:not([aria-disabled='true']):not(.selected) {
-  background: color-mix(in srgb, var(--kayko-color-on-surface) 8%, transparent);
+.day:hover:not([aria-disabled='true'], .selected) {
+  background: var(--kayko-color-surface-sunken);
 }
 
 .today {
-  border-color: var(--kayko-color-primary);
-  color: var(--kayko-color-primary);
+  background: var(--kayko-color-surface-sunken);
 }
 
 .selected,
-.bandMiddle .selected {
+.selected:hover {
   background: var(--kayko-color-primary);
-  border-color: transparent;
   color: var(--kayko-color-on-primary);
+  font-weight: 600;
 }
 
 .day[aria-disabled='true'] {
-  color: color-mix(in srgb, var(--kayko-color-on-surface) 38%, transparent);
-  border-color: transparent;
+  background: transparent;
+  color: var(--kayko-color-text-faint);
+  font-weight: 400;
   cursor: default;
 }
 
 .day:focus-visible {
-  outline: 2px solid var(--kayko-color-on-surface);
+  outline: 2px solid var(--kayko-color-primary-border);
   outline-offset: 1px;
 }

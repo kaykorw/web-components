@@ -1,0 +1,127 @@
+/* Shared look of every text-like control (TextField, Textarea, Select, DatePicker trigger). */
+.control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--kayko-space-2);
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid var(--kayko-color-border-input);
+  border-radius: var(--kayko-radius-md);
+  background: var(--kayko-color-surface);
+  box-shadow: var(--kayko-shadow-xs);
+  color: var(--kayko-color-text-strong);
+  font-family: var(--kayko-font-family);
+  transition:
+    border-color var(--kayko-duration-fast) ease,
+    box-shadow var(--kayko-duration-fast) ease;
+}
+
+.control:hover:not(.disabled, .invalid) {
+  border-color: var(--kayko-color-border-strong);
+}
+
+.control:focus-within:not(.disabled) {
+  border-color: var(--kayko-color-primary-border);
+  box-shadow: 0 0 0 3px var(--kayko-color-focus-ring);
+}
+
+.invalid {
+  border-color: var(--kayko-color-danger-accent);
+}
+
+.invalid:focus-within {
+  border-color: var(--kayko-color-danger-accent);
+  box-shadow: 0 0 0 3px var(--kayko-color-danger-subtle);
+}
+
+.disabled {
+  background: var(--kayko-color-surface-muted);
+  box-shadow: none;
+  color: var(--kayko-color-text-disabled);
+  cursor: not-allowed;
+}
+
+.small {
+  min-height: 32px;
+  padding: 0 10px;
+  font-size: var(--kayko-font-size-sm);
+  border-radius: var(--kayko-radius-sm);
+}
+
+.medium {
+  min-height: 40px;
+  padding: 0 12px;
+  font-size: var(--kayko-font-size-md);
+}
+
+.large {
+  min-height: 48px;
+  padding: 0 14px;
+  font-size: var(--kayko-font-size-lg);
+}
+
+/* The native element inside the control */
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.input::placeholder {
+  color: var(--kayko-color-text-subtle);
+  opacity: 1;
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+/* We draw our own clear button */
+.input::-webkit-search-cancel-button {
+  display: none;
+  -webkit-appearance: none;
+}
+
+.adornment {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  color: var(--kayko-color-text-subtle);
+}
+
+.affix {
+  flex-shrink: 0;
+  color: var(--kayko-color-text-muted);
+}
+
+.clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--kayko-color-text-subtle);
+  cursor: pointer;
+}
+
+.clear:hover {
+  background: var(--kayko-color-surface-sunken);
+  color: var(--kayko-color-text);
+}
+
+.clear:focus-visible {
+  outline: 2px solid var(--kayko-color-primary-border);
+}

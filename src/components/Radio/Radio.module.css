@@ -1,0 +1,129 @@
+.group {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+  font-family: var(--kayko-font-family);
+}
+
+.legend {
+  margin-bottom: var(--kayko-space-3);
+  padding: 0;
+  color: var(--kayko-color-text-strong);
+  font-size: var(--kayko-font-size-md);
+  font-weight: 500;
+}
+
+.options {
+  display: flex;
+}
+
+.vertical {
+  flex-direction: column;
+  gap: var(--kayko-space-4);
+}
+
+.horizontal {
+  flex-wrap: wrap;
+  gap: var(--kayko-space-6);
+}
+
+.option {
+  display: grid;
+  grid-template-columns: 24px auto;
+  justify-content: start;
+  column-gap: var(--kayko-space-3);
+}
+
+.control {
+  position: relative;
+  grid-column: 1;
+  grid-row: 1;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* The screenshot's radios are 16 px circles with a mid-grey ring */
+.circle {
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--kayko-color-text-muted);
+  border-radius: 50%;
+  background: var(--kayko-color-surface);
+  transition:
+    border-color var(--kayko-duration-fast) ease,
+    border-width var(--kayko-duration-fast) ease;
+}
+
+.input:checked + .circle {
+  border: 5px solid var(--kayko-color-primary);
+}
+
+.input:hover:not(:disabled, :checked) + .circle {
+  border-color: var(--kayko-color-primary);
+}
+
+.input:focus-visible + .circle {
+  box-shadow: 0 0 0 3px var(--kayko-color-focus-ring);
+}
+
+.invalid .circle {
+  border-color: var(--kayko-color-danger-accent);
+}
+
+.input:disabled {
+  cursor: default;
+}
+
+.input:disabled + .circle {
+  border-color: var(--kayko-color-border-input);
+  background: var(--kayko-color-surface-muted);
+}
+
+.input:disabled:checked + .circle {
+  border-color: var(--kayko-color-primary-disabled);
+  background: var(--kayko-color-surface);
+}
+
+.label {
+  grid-column: 2;
+  grid-row: 1;
+  color: var(--kayko-color-text-strong);
+  font-size: var(--kayko-font-size-md);
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.description {
+  grid-column: 2;
+  color: var(--kayko-color-text-muted);
+  font-size: var(--kayko-font-size-sm);
+  line-height: 18px;
+}
+
+.disabled .label,
+.disabled .description {
+  color: var(--kayko-color-text-disabled);
+  cursor: default;
+}
+
+.error {
+  display: block;
+  margin-top: var(--kayko-space-2);
+  color: var(--kayko-color-danger-text);
+  font-size: var(--kayko-font-size-sm);
+}

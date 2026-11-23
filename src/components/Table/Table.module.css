@@ -1,0 +1,171 @@
+/* Measured from the Accounts screenshot: 12 px rounded border, 42 px header, 56 px rows. */
+.container {
+  overflow: hidden;
+  border: 1px solid var(--kayko-color-border);
+  border-radius: var(--kayko-radius-lg);
+  background: var(--kayko-color-surface);
+  font-family: var(--kayko-font-family);
+}
+
+.scroll {
+  overflow: auto;
+  max-height: inherit;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: var(--kayko-font-size-md);
+}
+
+.caption {
+  padding: var(--kayko-space-4) 18px 0;
+  color: var(--kayko-color-text-heading);
+  font-weight: 600;
+  text-align: left;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.table th {
+  height: 42px;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--kayko-color-border-subtle);
+  background: var(--kayko-color-surface);
+  color: var(--kayko-color-text-muted);
+  font-weight: 400;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.sticky th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.table td {
+  padding: 0 18px;
+  border-bottom: 1px solid var(--kayko-color-border-subtle);
+  color: var(--kayko-color-text);
+  vertical-align: middle;
+}
+
+.comfortable td {
+  height: 56px;
+}
+
+.compact td {
+  height: 44px;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.table .muted {
+  color: var(--kayko-color-text-muted);
+}
+
+.table .end {
+  text-align: right;
+}
+
+.table .center {
+  text-align: center;
+}
+
+.selectCell {
+  width: 24px;
+  padding-right: 0 !important;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.table tbody tr:hover td {
+  background: var(--kayko-color-surface-muted);
+}
+
+.selected td,
+.table tbody tr.selected:hover td {
+  background: var(--kayko-color-primary-faint);
+}
+
+.clickable:focus-visible {
+  outline: 2px solid var(--kayko-color-primary-border);
+  outline-offset: -2px;
+}
+
+/* Sorting */
+.sortButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.sortButton:hover {
+  color: var(--kayko-color-text);
+}
+
+.sortButton:focus-visible {
+  outline: 2px solid var(--kayko-color-primary-border);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.sortIcon {
+  display: inline-flex;
+  color: var(--kayko-color-text-faint);
+}
+
+.sortActive {
+  color: var(--kayko-color-primary-text);
+}
+
+/* States */
+.empty {
+  height: 120px !important;
+  color: var(--kayko-color-text-muted);
+  text-align: center;
+}
+
+.loadingRow td {
+  background: none !important;
+}
+
+.skeleton {
+  display: block;
+  width: 70%;
+  height: 12px;
+  border-radius: var(--kayko-radius-sm);
+  background: var(--kayko-color-surface-sunken);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.footer {
+  padding: 12px 18px;
+  border-top: 1px solid var(--kayko-color-border-subtle);
+}
