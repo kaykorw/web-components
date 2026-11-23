@@ -98,3 +98,31 @@ export function nextRange(current: DateRange, day: Date): DateRange {
 
 export const toDayKey = (d: Date): string =>
   `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+export interface CalendarCell {
+  date: Date;
+  /** Belongs to the previous or next month (shown faded). */
+  outside: boolean;
+}
+
+/**
+ * The weeks that cover `month`, including the leading/trailing days of the
+ * neighbouring months. 4 to 6 weeks, like the screenshot (November 2026 has 5).
+ */
+export function getMonthWeeks(month: Date, weekStartsOn: WeekStart): CalendarCell[][] {
+  const first = startOfMonth(month);
+  const start = addDays(first, -weekdayIndex(first, weekStartsOn));
+  const total = daysInMonth(first.getFullYear(), first.getMonth());
+  const cellCount = Math.ceil((weekdayIndex(first, weekStartsOn) + total) / 7) * 7;
+  const weeks: CalendarCell[][] = [];
+  for (let i = 0; i < cellCount; i++) {
+    const date = addDays(start, i);
+    if (i % 7 === 0) weeks.push([]);
+    weeks[weeks.length - 1]!.push({ date, outside: !isSameMonth(date, first) });
+  }
+  return weeks;
+}
+
+/** Number of whole months from a to b (b - a). */
+export const monthDiff = (a: Date, b: Date): number =>
+  (b.getFullYear() - a.getFullYear()) * 12 + (b.getMonth() - a.getMonth());

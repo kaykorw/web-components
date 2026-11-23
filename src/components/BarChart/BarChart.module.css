@@ -1,0 +1,126 @@
+.figure {
+  margin: 0;
+  font-family: var(--kayko-font-family);
+}
+
+.plot {
+  position: relative;
+  width: 100%;
+  outline: none;
+}
+
+.plot:focus-visible {
+  outline: 2px solid var(--kayko-color-primary-border);
+  outline-offset: 4px;
+  border-radius: var(--kayko-radius-sm);
+}
+
+.svg {
+  display: block;
+  overflow: visible;
+}
+
+.hoverColumn {
+  fill: var(--kayko-color-surface-sunken);
+}
+
+.gridLine {
+  stroke: var(--kayko-color-border);
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+.tick,
+.xLabel {
+  fill: var(--kayko-color-text-subtle);
+  font-size: var(--kayko-font-size-xs);
+}
+
+.empty {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  color: var(--kayko-color-text-muted);
+  font-size: var(--kayko-font-size-md);
+}
+
+.tooltip {
+  position: absolute;
+  z-index: 1;
+  min-width: 180px;
+  padding: 12px;
+  border: 1px solid var(--kayko-color-border);
+  border-radius: var(--kayko-radius-lg);
+  background: var(--kayko-color-surface);
+  box-shadow: var(--kayko-shadow-md);
+  pointer-events: none;
+}
+
+.tooltipTitle {
+  margin-bottom: 8px;
+  color: var(--kayko-color-text-muted);
+  font-size: var(--kayko-font-size-sm);
+}
+
+.tooltipRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--kayko-font-size-md);
+}
+
+.tooltipRow + .tooltipRow {
+  margin-top: 6px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tooltipLabel {
+  flex: 1;
+  color: var(--kayko-color-text-muted);
+}
+
+.tooltipValue {
+  margin-left: 16px;
+  color: var(--kayko-color-text-heading);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--kayko-color-text-muted);
+  font-size: var(--kayko-font-size-md);
+}
+
+.swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

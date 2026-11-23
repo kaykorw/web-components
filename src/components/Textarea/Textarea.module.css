@@ -1,0 +1,18 @@
+.control {
+  align-items: stretch;
+  padding: 10px 12px;
+  font-size: var(--kayko-font-size-md);
+}
+
+.textarea {
+  min-height: 60px;
+  line-height: 1.5;
+}
+
+.vertical {
+  resize: vertical;
+}
+
+.none {
+  resize: none;
+}

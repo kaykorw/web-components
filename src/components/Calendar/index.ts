@@ -4,6 +4,7 @@ export type {
   CalendarLabels,
   CalendarMode,
   CalendarProps,
+  CalendarSize,
   CalendarRangeProps,
   CalendarSingleProps,
   DateRange,

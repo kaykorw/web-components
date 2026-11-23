@@ -1,0 +1,67 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--kayko-space-3);
+  font-family: var(--kayko-font-family);
+}
+
+.label {
+  color: var(--kayko-color-text-muted);
+  font-size: var(--kayko-font-size-md);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--kayko-space-1);
+  margin-left: auto;
+}
+
+.arrow,
+.page {
+  display: inline-grid;
+  place-items: center;
+  box-sizing: border-box;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 6px;
+  border: 1px solid transparent;
+  border-radius: var(--kayko-radius-md);
+  background: transparent;
+  color: var(--kayko-color-text);
+  font-family: inherit;
+  font-size: var(--kayko-font-size-md);
+  cursor: pointer;
+  transition: background-color var(--kayko-duration-fast) ease;
+}
+
+.arrow:hover:not(:disabled),
+.page:hover:not(.current) {
+  background: var(--kayko-color-surface-muted);
+}
+
+.arrow:disabled {
+  color: var(--kayko-color-text-disabled);
+  cursor: default;
+}
+
+.current {
+  background: var(--kayko-color-primary-faint);
+  border-color: var(--kayko-color-primary-border-subtle);
+  color: var(--kayko-color-primary-text);
+  font-weight: 500;
+}
+
+.arrow:focus-visible,
+.page:focus-visible {
+  outline: 2px solid var(--kayko-color-primary-border);
+  outline-offset: 1px;
+}
+
+.ellipsis {
+  min-width: 24px;
+  color: var(--kayko-color-text-subtle);
+  text-align: center;
+}

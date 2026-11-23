@@ -1,0 +1,80 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kayko-space-2);
+  min-width: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--kayko-space-3);
+  margin-bottom: var(--kayko-space-3);
+}
+
+.label {
+  color: var(--kayko-color-text-muted);
+  font-size: var(--kayko-font-size-md);
+}
+
+.value {
+  color: var(--kayko-color-text-strong);
+  font-size: var(--kayko-font-size-3xl);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.caption {
+  color: var(--kayko-color-text-muted);
+  font-size: var(--kayko-font-size-md);
+}
+
+.trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--kayko-font-size-sm);
+  font-weight: 500;
+}
+
+.positive {
+  color: var(--kayko-color-success);
+}
+
+.negative {
+  color: var(--kayko-color-danger-text);
+}
+
+.neutral {
+  color: var(--kayko-color-text-muted);
+}
+
+.trendLabel {
+  color: var(--kayko-color-text-muted);
+  font-weight: 400;
+}
+
+.skeleton {
+  display: block;
+  border-radius: var(--kayko-radius-sm);
+  background: var(--kayko-color-surface-sunken);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.valueSkeleton {
+  width: 60%;
+  height: 32px;
+}
+
+.captionSkeleton {
+  width: 80%;
+  height: 14px;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}

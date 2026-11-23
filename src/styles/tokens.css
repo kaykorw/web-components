@@ -1,59 +1,108 @@
 /*
- * Kayko Design System: placeholder tokens.
+ * Kayko Design System tokens.
  *
- * Token names follow the Flutter ColorScheme roles (primary, onPrimary,
- * primaryContainer, error, surface, outline, ...) so one vocabulary works on
- * both platforms. The same hex values live in
- * flutter/app_ui/lib/src/theme/app_theme.dart.
+ * Every colour below was sampled from the Kayko product screenshots
+ * (Accounts table, Filters popover, New Account sheet, Verify email card,
+ * stat cards, date range picker, transaction chart). Sizes are measured from
+ * the same screenshots (2x retina, halved).
  *
- * Replace the values with the real Figma tokens when the foundation pages
- * (colours, typography, spacing) are done. Keep the names.
+ * The same values live in Flutter: app_ui/lib/src/theme/app_tokens.dart.
+ * Change a value in both places, never in a component.
  *
- * Import once at the app root (and in .storybook/preview.tsx).
- * Dark theme: set data-theme="dark" on <html> (or any ancestor).
+ * Override any token for a whole app or a single subtree:
+ *   .my-area { --kayko-color-primary: #...; }
  */
- :root,
- [data-theme='light'] {
-   color-scheme: light;
- 
-   --kayko-color-primary: #2563eb;
-   --kayko-color-on-primary: #ffffff;
-   --kayko-color-primary-container: #dbe5ff;
-   --kayko-color-on-primary-container: #0b2a6b;
- 
-   --kayko-color-error: #d92d20;
-   --kayko-color-on-error: #ffffff;
- 
-   --kayko-color-surface: #ffffff;
-   --kayko-color-on-surface: #1a1c22;
-   --kayko-color-on-surface-variant: #5b6170;
- 
-   --kayko-color-outline: #767c8a;
-   --kayko-color-outline-variant: #d9dce3;
- 
-   --kayko-font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
- 
-   --kayko-radius-sm: 4px;
-   --kayko-radius-md: 8px;
-   --kayko-radius-lg: 12px;
- }
- 
- [data-theme='dark'] {
-   color-scheme: dark;
- 
-   --kayko-color-primary: #9db8ff;
-   --kayko-color-on-primary: #0b2a6b;
-   --kayko-color-primary-container: #1e3f99;
-   --kayko-color-on-primary-container: #dbe5ff;
- 
-   --kayko-color-error: #ffb4ab;
-   --kayko-color-on-error: #690005;
- 
-   --kayko-color-surface: #121318;
-   --kayko-color-on-surface: #e3e4ea;
-   --kayko-color-on-surface-variant: #a9aeba;
- 
-   --kayko-color-outline: #8b909c;
-   --kayko-color-outline-variant: #3a3e48;
- }
- 
+ :root {
+    /* Brand */
+    --kayko-color-primary: #4a99e9; /* primary buttons, checked controls */
+    --kayko-color-primary-hover: #428ad2;
+    --kayko-color-primary-pressed: #3671af;
+    --kayko-color-primary-disabled: #74b2df; /* disabled primary buttons */
+    --kayko-color-primary-text: #428ad2; /* selected text, current page, icons */
+    --kayko-color-primary-text-strong: #3671af; /* text on primary-subtle (selected presets) */
+    --kayko-color-primary-subtle: #f1f8fe; /* icon tiles, selected list items, range band */
+    --kayko-color-primary-faint: #f8fcff; /* selected nav item, current page */
+    --kayko-color-primary-border: #8dc5f3; /* focused fields */
+    --kayko-color-primary-border-subtle: #b2d9f8; /* active secondary button */
+    --kayko-color-focus-ring: #e6f2fd;
+    --kayko-color-on-primary: #ffffff;
+  
+    /* Text */
+    --kayko-color-text-strong: #030816; /* values, dialog titles, field labels */
+    --kayko-color-text-heading: #121826; /* page titles */
+    --kayko-color-text-emphasis: #212936; /* menu items, triggers */
+    --kayko-color-text: #394150; /* body, table cells */
+    --kayko-color-text-muted: #6c727f; /* descriptions, table headers, captions */
+    --kayko-color-text-subtle: #9da3ae; /* placeholders, secondary lines, chart axes */
+    --kayko-color-text-disabled: #b6b9bf;
+    --kayko-color-text-faint: #d9dce1; /* disabled and outside-month days */
+  
+    /* Surfaces */
+    --kayko-color-surface: #ffffff;
+    --kayko-color-surface-muted: #f9fafb; /* hover, active secondary button */
+    --kayko-color-surface-sunken: #f2f5f9; /* avatars, today, chart hover column */
+  
+    /* Borders */
+    --kayko-color-border-subtle: #f3f4f6; /* row and section dividers */
+    --kayko-color-border: #eff2f6; /* cards, tables, popovers, secondary buttons, search */
+    --kayko-color-border-input: #e3e8ef; /* form fields, sheet dividers */
+    --kayko-color-border-strong: #d2d5da; /* checkboxes, picker triggers, chevrons */
+  
+    /* Status */
+    --kayko-color-success: #33803f; /* badge text and dot */
+    --kayko-color-success-subtle: #f2fdf5;
+    --kayko-color-success-strong: #43946c; /* chart "money in" */
+    --kayko-color-success-text: #347659; /* large positive values */
+    --kayko-color-warning: #9c630f;
+    --kayko-color-warning-subtle: #fefcea;
+    --kayko-color-danger: #ca3a31; /* danger buttons, chart "money out" */
+    --kayko-color-danger-text: #aa2e26; /* large negative values, error text */
+    --kayko-color-danger-accent: #dd524c; /* required asterisk */
+    --kayko-color-danger-subtle: #fef3f2; /* not in the screenshots: derived to match the other subtle tints */
+    --kayko-color-overlay: rgb(3 8 22 / 0.1); /* behind dialogs and sheets, with a blur */
+  
+    /* Chart series, in order */
+    --kayko-chart-1: #4a99e9;
+    --kayko-chart-2: #43946c;
+    --kayko-chart-3: #ca3a31;
+    --kayko-chart-4: #9c630f;
+    --kayko-chart-5: #6c727f;
+  
+    /* Type (the screenshots use Inter) */
+    --kayko-font-family: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --kayko-font-size-xs: 12px;
+    --kayko-font-size-sm: 13px;
+    --kayko-font-size-md: 14px;
+    --kayko-font-size-lg: 16px;
+    --kayko-font-size-xl: 18px;
+    --kayko-font-size-2xl: 24px; /* page title */
+    --kayko-font-size-3xl: 28px; /* stat values, auth titles */
+  
+    /* Radius */
+    --kayko-radius-xs: 4px; /* badges, calendar days */
+    --kayko-radius-sm: 6px; /* small buttons, pagination */
+    --kayko-radius-md: 8px; /* buttons, inputs, menu items, icon tiles */
+    --kayko-radius-lg: 12px; /* popovers, tables, code inputs */
+    --kayko-radius-xl: 16px; /* cards, dialogs */
+    --kayko-radius-full: 9999px;
+  
+    /* Elevation */
+    --kayko-shadow-xs: 0 1px 2px rgb(16 24 40 / 0.04);
+    --kayko-shadow-sm: 0 1px 3px rgb(16 24 40 / 0.08), 0 1px 2px rgb(16 24 40 / 0.04);
+    --kayko-shadow-md: 0 12px 24px -6px rgb(16 24 40 / 0.12), 0 4px 8px -2px rgb(16 24 40 / 0.05);
+    --kayko-shadow-lg: 0 24px 48px -12px rgb(16 24 40 / 0.18);
+  
+    /* Spacing (4 px grid) */
+    --kayko-space-1: 4px;
+    --kayko-space-2: 8px;
+    --kayko-space-3: 12px;
+    --kayko-space-4: 16px;
+    --kayko-space-5: 20px;
+    --kayko-space-6: 24px;
+    --kayko-space-8: 32px;
+  
+    /* Motion */
+    --kayko-duration-fast: 120ms;
+    --kayko-duration-normal: 200ms;
+  }
+  

@@ -1,0 +1,67 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--kayko-space-4);
+  font-family: var(--kayko-font-family);
+}
+
+.main {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--kayko-space-3);
+  min-width: 0;
+}
+
+.leading {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.heading {
+  margin: 0;
+  color: var(--kayko-color-text-heading);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.description {
+  margin: 0;
+  color: var(--kayko-color-text-muted);
+  font-size: var(--kayko-font-size-md);
+  line-height: 1.45;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--kayko-space-2);
+}
+
+.page .heading {
+  font-size: var(--kayko-font-size-2xl);
+  letter-spacing: -0.01em;
+}
+
+.section .heading {
+  font-size: var(--kayko-font-size-xl);
+  font-weight: 600;
+}
+
+.card .heading {
+  font-size: var(--kayko-font-size-lg);
+  font-weight: 600;
+}
+
+.card .description {
+  font-size: var(--kayko-font-size-sm);
+}

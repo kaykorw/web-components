@@ -1,0 +1,35 @@
+.control {
+  padding-right: 0;
+}
+
+.select {
+  appearance: none;
+  height: auto;
+  padding: 10px 36px 10px 0;
+  line-height: 18px;
+  cursor: pointer;
+  /* The control is the visual box; the select fills it so the whole box is clickable.
+     Equal top/bottom padding centres the text (Chrome ignores vertical alignment here). */
+  align-self: stretch;
+}
+
+.small .select {
+  padding-block: 6px;
+}
+
+.large .select {
+  padding-block: 14px;
+}
+
+/* Placeholder colour while the empty option is selected */
+.select:has(option[value='']:checked) {
+  color: var(--kayko-color-text-subtle);
+}
+
+.chevron {
+  position: absolute;
+  right: 12px;
+  display: inline-flex;
+  pointer-events: none;
+  color: var(--kayko-color-text-strong);
+}
