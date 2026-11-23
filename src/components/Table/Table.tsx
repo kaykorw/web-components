@@ -1,6 +1,6 @@
 import { useState, type CSSProperties, type KeyboardEvent, type ReactNode } from 'react';
 
-import { Checkbox } from '../Checkbox';
+import { Checkbox } from '../Checkbox/Checkbox';
 import { Icon } from '../Icon';
 import styles from './Table.module.css';
 
