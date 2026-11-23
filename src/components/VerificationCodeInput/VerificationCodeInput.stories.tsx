@@ -2,7 +2,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
 
-import { Button } from '../Button';
+import { Button } from '../Button/Button';
 import { Card } from '../Card';
 import { Icon } from '../Icon';
 import { IconTile } from '../IconTile';
