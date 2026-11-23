@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useArgs } from 'storybook/preview-api';
 import { fn } from 'storybook/test';
 
-import { Button } from '../Button';
+import { Button } from '../Button/Button';
 import { Select } from '../Select';
 import { TextField } from '../TextField';
 import { Dialog } from './Dialog';

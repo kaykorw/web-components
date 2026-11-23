@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useMemo, useState } from 'react';
 
 import { AvatarLabel } from '../Avatar';
-import { Button } from '../Button';
+import { Button } from '../Button/Button';
 import { Icon } from '../Icon';
 import { Pagination } from '../Pagination';
 import { StatusBadge } from '../StatusBadge';

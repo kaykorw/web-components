@@ -1,7 +1,7 @@
 // Story names MUST match the Flutter Widgetbook use-case names.
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Button } from '../Button';
+import { Button } from '../Button/Button';
 import { Icon } from '../Icon';
 import { Title } from './Title';
 
